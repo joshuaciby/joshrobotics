@@ -1,5 +1,5 @@
 import Reveal from "./Reveal";
-import RobotSVG from "./RobotSVG";
+import Image from "next/image";
 import { ROBOTS } from "@/lib/data";
 
 export default function TeardownGallery() {
@@ -26,7 +26,23 @@ export default function TeardownGallery() {
                   <span className="flag">{r.flag}</span>
                   <span className={`status ${r.status[0]}`}>{r.status[1]}</span>
                   <div className="floor" />
-                  <RobotSVG kind={r.kind} c1={r.c1} c2={r.c2} />
+                  <Image
+  src={
+    r.name === "Unitree Go2"
+      ? "/images/robots/Unitree Go2/go2.jpg"
+      : r.name === "Boston Dynamics Spot"
+      ? "/images/robots/boston dynamics spot/spot.jpg"
+      : r.name === "Tesla Optimus"
+      ? "/images/robots/Tesla Optimus/OPTIMUS.jpg"
+      : r.name === "Figure 02"
+      ? "/images/robots/Figure 02/FIGURE 02.jpg"
+      : "/images/robots/Unitree Go2/go2.jpg"
+  }
+  alt={r.name}
+  width={500}
+  height={350}
+  className="w-full h-full object-cover rounded-xl"
+/>
                 </div>
                 <div className="body">
                   <h3>{r.name}</h3>
